@@ -69,7 +69,7 @@ factorial(4)
 
 factorial(0)
 
-choose(5, 3)
+choose(5, 3) # choose(n,m) = Coeficiente binomial (n,m)= n!/(m!(n-m)!)
 
 choose(3,5)
 
