@@ -99,11 +99,11 @@ acos(-8)
 
 print(sqrt(2),10)
 round(sqrt(2), 3)
-floor(sqrt(2))
-ceiling(sqrt(2))
+floor(sqrt(2)) #redondeo a la baja
+ceiling(sqrt(2)) #redondeo a la alta(techo)
 trunc(sqrt(2))
 
-sqrt(2)^2-2
+sqrt(2)^2-2 #aqui podemos ver los errores que se van acumuladno en el redondeo
 
 round(sqrt(2), 4)^2
 
@@ -111,10 +111,12 @@ round(sqrt(2), 4)^2
 print(2^50, 15)
 print(2^50, 2)
 print(pi, 22)
-#3.141592653589793115998
-#3.141592653589793238462
 
-round(1.25,1)
+#No pedir mas de 16 digitos decimales en R
+#3.141592653589793115998 (PI en R)
+#3.141592653589793238462 (PI real)
+
+round(1.25,1) 
 round(1.35,1)
 round(sqrt(2),0)
 round(sqrt(2))
@@ -132,7 +134,7 @@ x = (pi^2)/2
 x
 
 y <- cos(pi/4)
-y
+
 
 sin(pi/4) + cos(pi/4) -> z
 z
