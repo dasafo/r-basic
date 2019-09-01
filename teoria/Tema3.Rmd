@@ -1,11 +1,12 @@
 ---
-title: Tema 3 - Estructuras de datos
-author: Juan Gabriel Gomila & María Santos
-output: 
+title: "Tema 3 - Estructuras de datos"
+author: "Juan Gabriel Gomila & María Santos"
+output:
   ioslides_presentation:
-    widescreen: true
     css: JB_style.css
     logo: Imgs/LogoCurso.png
+    widescreen: yes
+  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -63,7 +64,6 @@ Vamos a crear un vector que contenga 3 copias de 1 9 9 8 0 7 2 6 con la función
 <div class = "aligncenter">
 ![](Imgs/studytime.png)
 </div>
-
 
 
 ## Progresiones y Secuencias

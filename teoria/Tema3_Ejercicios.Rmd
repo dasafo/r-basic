@@ -1,0 +1,73 @@
+---
+title: "Tema 3 - Ejercicios"
+author: "David Salas"
+output:
+  ioslides_presentation:
+    css: JB_style.css
+    logo: Imgs/LogoCurso.png
+    widescreen: yes
+  beamer_presentation: default
+---
+
+
+## Ejercicios 
+
+*1. Repite tu año de nacimiento 10 veces*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+rep("1985",10)
+```
+
+*2. Crea el vector que tenga como entradas 16,0,1,20,1,7,88,5,1,9 llámalo vec y modifica la cuarta entrada con la función fix()*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+vec=c(16,0,1,20,1,7,88,5,1,9) 
+```
+luego con `fix(vec)` modificamos la cuarta entrada.
+
+## Ejercicios 
+
+*3. Imprimid los números del 1 al 20*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+1:20
+```
+
+*4. Imprimid los 20 primeros números pares*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+seq(0,20,2)
+```
+
+*5. Imprimid 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+print(seq(17,98, length.out=30),4)
+```
+
+## Ejercicios 
+
+*6. Combinad las dos funciones anteriores, `sort` y `rev` para crear una función que dado un vector $x$ os lo devuelva ordenado en orden decreciente.*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+x=c(1,6,8,2,45,222,11,18,0)
+decr=rev(sort(x))
+print(decr)
+```
+
+*7. Razonad si aplicar primero `sort` y luego `rev` a un vector $x$ daría en general el mismo resultado que aplicar primero `rev` y luego `sort`.*
+
+<div class = "r-code">
+`Sort` --> `Rev`: Nos ordena en orden ascendente y luego le da la vuelta al vector y obtenemos el orden descendente.
+`Rev` --> `Sort`: Le da la vuelta al vector y luego ordena en orden ascendente
+</div>
+
+## Ejercicios 
+
+*8. Investigad la documentación de la función `sort` (recordad que podéis usar la sintaxis `?sort` en la consola) para leer si cambiando algún argumento de la misma podéis obtener el mismo resultado que habéis programado en el primer ejercicio.*
+
+```{r, echo = TRUE, message = FALSE, comment = NA}
+x=c(1,6,8,2,45,222,11,18,0)
+decr=sort(x,decreasing = FALSE)
+print(decr)
+```
