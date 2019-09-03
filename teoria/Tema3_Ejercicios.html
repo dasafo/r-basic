@@ -3243,7 +3243,30 @@ print(decr)</pre>
 decr=sort(x,decreasing = FALSE)
 print(decr)</pre>
 
-<pre >[1]   0   1   2   6   8  11  18  45 222</pre></article></slide>
+<pre >[1]   0   1   2   6   8  11  18  45 222</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejercicios</h2></hgroup><article  id="ejercicios-4">
+
+<p><em>9. Observad qué ocurre si,</em> siendo \(A = \begin{pmatrix} 2 &amp; 0 &amp; 2\\ 1 &amp; 2 &amp; 3\\ 0 &amp; 1 &amp; 3 \end{pmatrix}\) y \(B = \begin{pmatrix} 3 &amp; 2 &amp; 1\\ 1 &amp; 0 &amp; 0\\ 1 &amp; 1 &amp; 1 \end{pmatrix}\), realizamos las operaciones \(A\cdot B\), \(A^2\) y \(B^3\)</p>
+
+<pre class = 'prettyprint lang-r'>A=matrix(c(2,1,0,0,2,1,2,3,3), ncol = 3)
+B =matrix(c(3,1,1,2,0,1,1,0,1), ncol = 3)
+C=A%*%B
+
+library(Biodem)
+A2=mtx.exp(A,2)
+B3=mtx.exp(B,3)</pre>
+
+</article></slide><slide class=""><hgroup><h2>Ejercicios</h2></hgroup><article  id="ejercicios-5">
+
+<p><em>10-</em> Comprobad, con los datos del ejemplo anterior(matriz M de abajo), que si \(P\) es la matriz de vectores propios de \(M\) en columna y \(D\) la matriz diagonal cuyas entradas son los valores propios de \(M\), entoces se cumple la siguiente igualdad llamada <strong>descomposición canónica</strong>: \[M = P\cdot D\cdot P^{-1}\]</p>
+
+<pre class = 'prettyprint lang-r'>M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
+
+P= eigen(M)$vectors
+D= diag(eigen(M)$values) 
+invP=solve(P)
+M2=P %*%  D%*% invP</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

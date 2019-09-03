@@ -365,7 +365,7 @@ diag(A)
 ## Función apply()
 
 ```{r}
-apply(A, MARGIN = c(1,2), FUN = cuadrado)
+apply(A, MARGIN = c(1,2), FUN = function(x){sqrt(x^2)})
 apply(A, MARGIN = 1, FUN = sum)
 apply(A, MARGIN = 2, FUN = sum)
 ```
