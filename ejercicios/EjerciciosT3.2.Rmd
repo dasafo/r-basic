@@ -1,7 +1,7 @@
 ---
 title: "Ejercicios sobre LaTeX, R y Markdown"
-author: "Juan Gabriel Gomila & María Santos"
-date: "30/12/2018"
+author: "David"
+date: "3/9/2019"
 output: pdf_document
 ---
 
@@ -9,50 +9,93 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Instrucciones
-
-En primer lugar, debéis reproducir este documento tal cual está. Necesitaréis instalar [MiKTeX](https://miktex.org/download) y [Texmaker](http://www.xm1math.net/texmaker/).
-
-A continuación de cada pregunta, tenéis que redactar vuestras respuestas de manera correcta y argumentada, indicando qué hacéis, por qué, etc. Si se os pide utilizar instrucciones de `R`, tendréis que mostrarlas todas en chunks.
-
-El objetivo de esta tarea es que os familiaricéis con los documentos Markdown, las fórmulas en \LaTeX\   y los chunks de `R`. Y, de lo más importante, que os acostumbréis a explicar lo que hacéis en cada momento.
 
 # Preguntas
 
 ## Pregunta 1
 
-Realizad los siguientes productos de matrices siguiente en `R`:
+-- Las matrices `A` y `B` vienen definidas por: 
 
-$$A\cdot B$$
-$$B\cdot A$$
-$$(A\cdot B)^t$$
-$$B^t\cdot A$$
-$$(A\cdot B)^{-1}$$
-$$A^{-1}\cdot B^t$$
-
-donde
 $$A = \begin{pmatrix}1 & 2 & 3 & 4\\ 4 & 3 & 2 & 1\\ 0 & 1 & 0 & 2\\ 3 & 0 & 4 & 0\end{pmatrix}\qquad B= \begin{pmatrix}4 & 3 & 2 & 1\\ 0 & 3 & 0 & 4\\ 1 & 2 & 3 & 4\\ 0 & 1 & 0 & 2\end{pmatrix}$$
 
-Finalmente, escribe haciendo uso de \LaTeX\  el resultado de los dos primeros productos de forma adecuada.
+-- Ahora realizamos los siguientes calculos:
 
-```{r, echo = FALSE, eval = FALSE}
+- $$A\cdot B$$
+Definimos dentro de un Chuck las matrices `A` y `B` y las multiplicamos usando la expresión de `R` `%*%`:
+
+```{r, echo = T, eval = T}
 A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
 B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
 A%*%B
+```
+
+
+- $$B\cdot A$$
+Definimos dentro de un Chuck las matrices `A` y `B` y las multiplicamos usando la expresión de `R` `%*%`:
+```{r, echo = T, eval = T}
+A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
+B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
 B%*%A
+```
+
+- $$(A\cdot B)^t$$
+Definimos dentro de un Chuck las matrices `A` y `B`, las multiplicamos y calculamos su traspuesta usando la expresión de `R` $t(A\cdot B)$:
+```{r, echo = T, eval = T}
+A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
+B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
 t(A%*%B)
+```
+
+- $$B^t\cdot A$$
+Definimos dentro de un Chuck las matrices `A` y `B`, calculamos la traspuesta de `B` y la multiplicamos por `A`:
+```{r, echo = T, eval = T}
+A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
+B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
 t(B)%*%A
+```
+
+- $$(A\cdot B)^{-1}$$
+Definimos dentro de un Chuck las matrices `A` y `B`, multiplicamos $A\cdot B$ y calculamos su inversa unsando $solve()$:
+```{r, echo = T, eval = T}
+A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
+B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
 solve(A%*%B)
+```
+
+- $$A^{-1}\cdot B^t$$
+
+Definimos dentro de un Chuck las matrices `A` y `B`, calculamos la inversa $A^{-1}$ unsando $solve()$ y después la multiplicamos por la traspuesta de `B`:
+```{r, echo = T, eval = T}
+A = cbind(c(1,4,0,3),c(2,3,1,0),c(3,2,0,4),c(4,1,2,0))
+B = cbind(c(4,0,1,0),c(3,3,2,1),c(2,0,3,0),c(1,4,4,2))
 solve(A)%*%t(B)
 ```
 
+
+-- Finalmente, escribimos haciendo uso de \LaTeX\  el resultado de los dos primeros productos de forma adecuada.
+$$A\cdot B = \begin{pmatrix}7 & 19 & 11 & 29\\ 18 & 26 & 14 & 26\\ 0 & 5 & 0 & 8\\ 16 & 17 & 18 & 19\end{pmatrix}\qquad$$
+$$B\cdot A = \begin{pmatrix}19 & 19 & 22 & 23\\ 24 & 9 & 22 & 3\\ 21 & 11 & 23 & 12\\ 10 & 3 & 10 & 1\end{pmatrix}\qquad$$
+
+
+
+
 ## Pregunta 2
 
-Considerad en un vector los números de vuestro DNI y llamadlo `dni`. Por ejemplo, si vuestro DNI es 54201567K, vuestro vector será $$dni = (5,4,2,0,1,5,6,7)$$.
+Primero definimos un vector y lo llamamos `dni`, después elevamos al cuadrado cada valor de este, luego con la ayuda de `sqrt()` determinamos la raiz cuadrada de cada uno de sus valores*(redondeado a 3 decimales)* y finalmente con la ayuda de `sum()` calculamos la suma total de los valores del vector `dni`:
 
-Definid el vector en `R`. Calculad con `R` el vector `dni` al cuadrado, la raíz cuadrada del vector `dni` y, por último, la suma de todas las cifras del vector `dni`.
+```{r, echo = T, eval = T}
+dni=c(2,3,1,6,1,5,2,0)
+dni^2
+round(sqrt(dni),3)
+sum(dni)
+```
+Finalmente, escribimos todos estos vectores también a \LaTeX:
 
-Finalmente, escribid todos estos vectores también a \LaTeX
+- $dni=(2,3,16,1,5,2,0)$
+- `dni` elevado al cuadrado: $(4,9,1, 36,1, 25, 4,0)$
+- raiz cuadrada de `dni`: $(1.414 1.732 1.000 2.449 1.000 2.236 1.414 0.000)$
+- suma de todos los valores de `dni`: $20$
+
 
 ## Pregunta 3
 
@@ -61,4 +104,17 @@ Considerad el vector de las letras de vuestro nombre y apellido. Llamadlo `name`
 Definid dicho vector en `R`. Calculad el subvector que solo contenga vuestro nombre. Calculad también el subvector que contenga solo vuestro apellido.
 Ordenadlo alfabéticamente. Cread una matriz con este vector.
 
-Redactad todos vuestros resultados y utilizad \LaTeX\   cuando pertoque
+Primero creamos el subvector `nom` para el nombre, luego el subector `ap` para el apellido (diciéndole que quite las posiciones de nombre). Usando la función $sort()$ ordenamos el apellido. Y finalmente metemos el vector del apellido ordenado (`ap_ord`) en una matriz (`ap_ord_mtx`):
+
+
+```{r, echo = T, eval = T}
+name=c("D","A","V","I","D","S","A","L","A","S")
+nom=name[c(1,2,3,4,5)]
+ap=name[-c(1,2,3,4,5)]
+ap_ord=sort(ap)
+ap_ord_mtx=matrix(ap_ord, ncol=2)
+nom
+ap
+ap_ord
+ap_ord_mtx
+```

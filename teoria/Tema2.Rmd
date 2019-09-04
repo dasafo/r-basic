@@ -379,13 +379,13 @@ La función `text{}` nos permite introducir texto en fórmulas matemáticas.
 Los bloques de código de R dentro de un documento R Markdown se indican de la manera siguiente
 
 <div class = "r-code">
-`r ''` ```{r}
+' ```{r}
 
 ` x = 1+1`
 
 ` x`
 
-`r ''` ```</div>
+' ```</div>
 
 que resulta en
 

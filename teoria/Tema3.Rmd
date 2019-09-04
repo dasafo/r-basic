@@ -2,11 +2,11 @@
 title: "Tema 3 - Estructuras de datos"
 author: "Juan Gabriel Gomila & María Santos"
 output:
+  beamer_presentation: default
   ioslides_presentation:
     css: JB_style.css
     logo: Imgs/LogoCurso.png
     widescreen: yes
-  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
