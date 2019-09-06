@@ -14,41 +14,65 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```{r, fig.height = 4, fig.width = 7, fig.align = "center"}
 curve(x^2-3*x+30, xlim=c(-15,15), 
       xlab=expression(x), ylab=expression(y=x^2-3*x+30),
-      lty = "dashed", col = "blue", add = TRUE)
+      lty = "dashed", col = "blue")
 
 ```
 
-## 2- Considerando lo que habéis obtenido en el ejercicio anterior y siendo y = f(x) = $x^2-3x+30$ e I = [-15:15], si en vez de utilizar la función curve(), utilizamos la función plot(), ¿es correcta la sentencia plot(f(I)) para representar la curva f en el intervalo I? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia plot(f(I)) se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función f en R y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+## 2- Considerando lo que habéis obtenido en el ejercicio anterior y siendo $y = f(x) = x^2-3x+30$ e I = [-15:15], si en vez de utilizar la función curve(), utilizamos la función plot(), ¿es correcta la sentencia plot(f(I)) para representar la curva f en el intervalo I? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia plot(f(I)) se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función f en R y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
 
 ```{r, fig.height = 4, fig.width = 7, fig.align = "center"}
-
+x = (-15:15)
+y = x^2-3*x+30
+plot(x,y, xlab=expression(x), ylab=expression(y=x^2-3*x+30),type = "b",
+      pch = 16, cex = 0.8, col = "blue")
 ```
+*En el ejercicio 1 hemos representado el polinomio y luego hemos definido el rango en el cual se muestra. En el ejercicio 2 hemos pasado a la función polinómica los valores del vector `x` que va desde $-15$ a $15$. Por eso obtenemos la misma gráfica.*
 
 ## 3- Dibuja un gráfico semilogarítmico de la función $y = 5\cdot 2^x$ entre -10 y 25. Utilizad la función curve(). Mostrad solo la etiqueta del eje 0Y, que ponga $y = 5\cdot 2^x$ en formato matemático.
 
-```{r, fig.height = 4, fig.width = 7, fig.align = "center"}
-
+```{r, fig.height = 4, fig.width = 6, fig.align = "center"}
+curve(5*2^x, xlim=c(-10,25), 
+      ylab=expression(5*2^x),xlab="",log = "y")
 ```
 
-## 4- Dibuja el gráfico de la función y_1 = 3x utilizando la función curve(). Añade la curva $y_{2}=-3x$, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto (13,10)) que indique que la función 3x es la azul y la -3x verde.
+## 4- Dibuja el gráfico de la función $y_{1} = 3x$ utilizando la función curve(). Añade la curva $y_{2}=-3x$, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto (13,10)) que indique que la función 3x es la azul y la -3x verde.
 
 ```{r, fig.height = 4, fig.width = 7, fig.align = "center"}
-
+curve(3*x, xlim=c(-10,20), col="blue", xlab="", ylab = "",main = "2 rectas", sub="Dos rectas con pendiente opuesto")
+curve(-3*x, xlim=c(-10,20), add = TRUE, col = "green")
+legend(13,10, 
+       legend = c(expression(3*x), expression(-3*x)), 
+       lwd = 2, 
+       col = c("blue", "green"), 
+       lty = c("solid", "solid")
+       )
 ```
 
 ## 5- Dad la instrucción que añada a un gráfico anterior la recta horizontal y = 0 de color rojo con un grosor de 5 puntos.
 
 ```{r, fig.height = 4, fig.width = 7, fig.align = "center"}
-
+curve(3*x, xlim=c(-10,20), col="blue", xlab="", ylab = "",main = "2 rectas", sub="Dos rectas con pendiente opuesto")
+curve(-3*x, xlim=c(-10,20), add = TRUE, col = "green")
+abline(h = 0, col = "red", lwd=5)
+legend(13,10, 
+       legend = c(expression(3*x), expression(-3*x)), 
+       lwd = 2, 
+       col = c("blue", "green"), 
+       lty = c("solid", "solid")
+       )
 ```
 
 ## 6- Dad la instrucción que añada a un gráfico anterior la recta $y = 2x+7$ de color azul con un grosor de 2 puntos.
 
 ```{r, fig.height = 4, fig.width = 7, fig.align = "center"}
+curve(3*x, xlim=c(-10,20), col="red", xlab="", ylab = "",main = "2 rectas", sub="Dos rectas con pendiente opuesto")
+curve(-3*x, xlim=c(-10,20), add = TRUE, col = "green")
+abline(2,7, col = "blue", lwd=2)
+legend(13,10, 
+       legend = c(expression(3*x), expression(-3*x)), 
+       lwd = 2, 
+       col = c("red", "green"), 
+       lty = c("solid", "solid")
+       )
 
 ```
-
-
-
-
-
