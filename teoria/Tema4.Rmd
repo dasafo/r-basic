@@ -178,7 +178,7 @@ alumnos = c(1:10)
 notas = c(2,5,7,9,8,3,5,6,10,7)
 plot(alumnos,notas, main = "Grafico con texto")
 text(alumnos,notas, labels = c("S","A","N","E","N","S","A","A","E","N"), 
-     pos = c(rep(3,times = 8),1,3))
+     pos = c(rep(3,times = 8),1,4))
 ```
 
 

@@ -1,4 +1,4 @@
----
+  ---
 title: "Graficos"
 author: "Curso de Estadística Descriptiva"
 date: "22/12/2018"
@@ -26,7 +26,7 @@ plot(2^(1:6))
 Si queremos representar una función $f(x)$:
 
 ```{r}
-f <- function(x){ sqrt(x) }
+f <- function(z){ sqrt(z) }
 plot(f)
 ```
 
@@ -38,11 +38,11 @@ fib = (1/sqrt(5))*((1+sqrt(5))/2)^n - (1/sqrt(5))*((1-sqrt(5))/2)^n
 fib
 par(mfrow = c(1,2))
 plot(fib, xlab = "n", ylab = expression(F[n]),
-     main = "Sucesión de Fibonacci", pch = 21, cex = 2,
+     main = "Sucesión de Fibonacci", pch = 21, cex = 1,
      col = "powderblue", bg = "orchid", log = "xy")
 
 plot(fib, xlab = "n", ylab = expression(F[n]),
-     main = "Sucesión de Fibonacci", pch = 21, cex = 2,
+     main = "Sucesión de Fibonacci", pch = 22, cex = 2,
      col = "powderblue", bg = "orchid", log = "y")
 par(mfrow = c(1,1))
 ```
