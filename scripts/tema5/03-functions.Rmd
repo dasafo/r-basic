@@ -18,7 +18,7 @@ sapply(iris[, 1:4], f)
 ```{r}
 df = data.frame(C1 = c(1,2,NA,4), C2 = c(5,NA,2,3))
 sapply(df, mean)
-sapply(df, mean, na.rm = TRUE)
+sapply(df, mean, na.rm = TRUE) #aplicamos na.rn para que nos qute los NA
 ```
 
 ```{r}
@@ -32,6 +32,7 @@ mtcars$cyl = as.factor(mtcars$cyl)
 mtcars$gear = as.factor(mtcars$gear)
 mtcars$carb = as.factor(mtcars$carb)
 str(mtcars)
+#ahora agragamos el consumo(mpg) en funcion de la cilindrada(cyl), marchas(gear) y nºcarburadores(carb)
 aggregate(mpg~cyl+gear+carb, data = mtcars, FUN = mean, na.rm = TRUE)
 ```
 

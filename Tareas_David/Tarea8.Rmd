@@ -1,0 +1,57 @@
+---
+title: "Tarea 8"
+author: "David Salas"
+date: "9/8/2019"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### *Carga en R o en Python el CSV de la web [winterolympicsmedals.com](http://winterolympicsmedals.com/medals.csv) y responde a las preguntas de la tarea. Preguntas de esta tarea:*
+
+### **1- ¿Cuantos deportistas aparecen en el data frame?**
+```{r}
+medallas = read.csv("../data/medals.csv",
+             stringsAsFactors = FALSE, 
+             header = TRUE)
+n_deport=nrow(medallas)
+sprintf("El numero de deportistas totales es: %i ",n_deport)
+```
+
+### **2- ¿Cuantos han ganado medallas de oro, cuantos de plata y cuantos de bronce?**
+
+```{r}
+medallas = read.csv("../data/medals.csv",
+             stringsAsFactors = FALSE, 
+             header = TRUE)
+m_gold=medallas[medallas$Medal == "Gold",]
+sprintf("El numero de Oros son: %i ",nrow(m_gold))
+m_silver=medallas[medallas$Medal == "Silver",]
+sprintf("El numero de Platas son: %i ",nrow(m_silver))
+m_bronze=medallas[medallas$Medal == "Bronze",]
+sprintf("El numero de Bronces son: %i ",nrow(m_bronze))
+```
+
+### **3- ¿En cuantos lugares se han hecho olimpiadas de invierno?**
+```{r}
+medallas = read.csv("../data/medals.csv",
+             stringsAsFactors = FALSE, 
+             header = TRUE)
+str(medallas)
+head(medallas,8)
+```
+
+### **4-¿Cuantos hombres y cuantas mujeres hay?**
+
+### **5- ¿En qué año participaron más deportistas?**
+
+
+
+```{r}
+
+```
+

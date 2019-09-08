@@ -2,11 +2,11 @@
 title: "Tema 5 - Data frames"
 author: "Juan Gabriel Gomila & María Santos"
 output:
-  beamer_presentation: default
   ioslides_presentation:
     css: JB_style.css
     logo: Imgs/LogoCurso.png
     widescreen: yes
+  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
@@ -107,10 +107,10 @@ Aquí tenéis una [lista de data frames](http://www.public.iastate.edu/~maitra/s
 ## Parámetros de read.table()
 
 ```{r}
-students = read.table("http://www.public.iastate.edu/~maitra/stat501/datasets/morel.dat", 
-  col.names = c("technicalDisciplines","aptitude","maths", "language",
-                "generalKnowledge"))
-head(students,8)
+# students = read.table(textConnection(getURL("https://www.public.iastate.edu/~maitra/stat501/datasets/morel.dat")),
+#   col.names = c("technicalDisciplines","aptitude","maths", "language",
+#                 "generalKnowledge"))
+# head(students,8)
 ```
 
 
@@ -139,6 +139,8 @@ no podemos entrar directamente la dirección en `read.table()`; una solución es
 ## Exportando datos a ficheros
 
 ```{r}
+students = read.table("../data/morel.dat", 
+  col.names = c("technicalDisciplines","aptitude","maths", "language", "generalKnowledge"))
 write.table(students, file = "../data/StudentsData", dec = ".")
 students2 = read.table("../data/StudentsData", header = TRUE)
 str(students2)

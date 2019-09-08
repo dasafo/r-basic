@@ -31,29 +31,32 @@ head(df)
 # Carga desde URL
 
 ```{r}
-df2 = read.table("https://maitra.public.iastate.edu/stat501/datasets/bulls.dat",
-                 header = FALSE, 
-                col.names = c("breed", "sale_price", "shoulder",
-                          "fat_free", "percent_ff", "frame_scale",
-                          "back_fat", "sale_height", "sale_weight"),
-                sep = "", dec = ".")
-head(df2)
-str(df2)
+# df2 = read.table("https://maitra.public.iastate.edu/stat501/datasets/bulls.dat",
+#                  header = FALSE, 
+#                 col.names = c("breed", "sale_price", "shoulder",
+#                           "fat_free", "percent_ff", "frame_scale",
+#                           "back_fat", "sale_height", "sale_weight"),
+#                 sep = "", dec = ".")
+# head(df2)
+# str(df2)
 ```
 
 
 # Factores en un DF
 
 ```{r}
-df3 = read.table("https://maitra.public.iastate.edu/stat501/datasets/olive.dat",
-                 stringsAsFactors = FALSE,
-                 header = TRUE)
-str(df3)
+# df3 = read.table("https://maitra.public.iastate.edu/stat501/datasets/olive.dat",
+#                  stringsAsFactors = FALSE,
+#                  header = TRUE)
+# str(df3)
 ```
 
 # Guardar un DF
 
 ```{r}
+df3 = read.table("../../data/olive.dat",
+             stringsAsFactors = FALSE, 
+             header = TRUE)
 write.table(df3, file = "../../data/olive.txt", dec = ".")
 df4 = read.table("../../data/olive.txt", header = TRUE, dec = ".")
 head(df4)
@@ -67,7 +70,7 @@ gender = c("H", "M", "M", "M", "H")
 age =    c( 23,  45,  20,  30,  18)
 family = c(  2,   3,   4,   2,   5)
 df5 = data.frame(genero = gender, edad = age, familia = family, stringsAsFactors = TRUE)
-row.names(df5) = c("P1", "P2", "P3", "P4", "P5")
+row.names(df5) = c("P1", "P2", "P3", "P4", "P5") #elegimos el nombre de las filas
 df5
 str(df5)
 dimnames(df5) = list(
@@ -77,7 +80,7 @@ dimnames(df5) = list(
 df5
 df5 = rbind(df5, c("H", 30, 1))
 df5
-df5$Sexo = as.character(df5$Sexo)
+df5$Sexo = as.character(df5$Sexo) #hacemos un castin
 df5$Ingresos = c(10000, 12000, 15000, 12000, 20000, 10000)
 ```
 
@@ -89,7 +92,7 @@ family = c(  2,   3,   4,   2,   5)
 df5 = data.frame(genero = gender, edad = age, familia = family, stringsAsFactors = TRUE)
 df5[df5$genero=="M", ] -> df_m
 str(df_m)
-df_m = droplevels(df_m)
+df_m = droplevels(df_m) #eliminamos los niveles sobrantes que arrastramos
 str(df_m)
 ```
 
@@ -105,7 +108,7 @@ head(iris_length)
 # Subset
 ```{r}
 subset(iris, Species == "versicolor", select = c(1,3)) -> versicolor
-rownames(versicolor) = 1:nrow(versicolor)
+rownames(versicolor) = 1:nrow(versicolor) #cambiamos el nombre de las filas a las del nuevo dataset
 head(versicolor, 5)
 str(versicolor)
 ```
