@@ -1,11 +1,13 @@
 ---
-title: "Tarea 8"
+title: "Tarea8"
 author: "David Salas"
 date: "9/8/2019"
-output:
-  html_document:
-    df_print: paged
+output: pdf_document
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -52,6 +54,3 @@ head(medallas,8)
 
 
 ```{r}
-
-```
-
