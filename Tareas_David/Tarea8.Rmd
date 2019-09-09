@@ -43,14 +43,32 @@ sprintf("El numero de Bronces son: %i ",nrow(m_bronze))
 medallas = read.csv("../data/medals.csv",
              stringsAsFactors = FALSE, 
              header = TRUE)
-str(medallas)
-head(medallas,8)
+unique(medallas$City)
 ```
 
 ### **4-¿Cuantos hombres y cuantas mujeres hay?**
+```{r}
+medallas = read.csv("../data/medals.csv",
+             stringsAsFactors = FALSE, 
+             header = TRUE)
+gender_M = subset(medallas, medallas$Event.gender == "M")
+
+gender_W = subset(medallas, medallas$Event.gender == "W")
+
+sprintf("El numero de Hombres son: %i ", nrow(gender_M))
+sprintf("El numero de Mujeres son: %i ", nrow(gender_W))
+```
 
 ### **5- ¿En qué año participaron más deportistas?**
 
 
-
+### **6- El campo NOC indica el país del ganador de la medalla. ¿Qué país puede presumir de haber ganado más medallas de oro en los juegos de invierno entre 1960 y 1996?***
 ```{r}
+medallas = read.csv("../data/medals.csv",
+             stringsAsFactors = FALSE, 
+             header = TRUE)
+
+subset(medallas, medallas$Year > 1960 & medallas$Year < 1996, ) -> medallas_pais
+
+subset(medallas_pais, medallas_pais$Medal=="Gold", 5) -> medallas_pais2
+```
