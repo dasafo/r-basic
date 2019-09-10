@@ -183,9 +183,10 @@ Su moda es el nivel `Mujer`
 Supongamos que tenemos una variable cualitativa guardada en un vector o un factor como la siguiente:
 
 ```{r}
-x = sample(1:5, size = 12, replace = TRUE)
+x = sample(1:5, size = 12, replace = TRUE) #muestra aleatoria de 12 elementos numeradas del 1 al 5
 x
 
+#Ahora sacamos un muestreo aleatorio de los valores si y no, y lo convertimos a factor para podeer trabajar con variables cualitativas
 Respuestas=factor(sample(c("Si", "No"), size = 12, replace = TRUE)) 
 Respuestas
 ```
@@ -195,9 +196,10 @@ Respuestas
 Con R, la tabla de frecuencias absolutas de un vector que representa una variable cualitativa se calcula con la función `table()`.
 
 ```{r}
-table(x)
+table(x) 
+#nos indica el numero/nivel y debajo el numero de veces que ha salido(si por azar un nivel no ha salido, no se muestra, esto se arregla haciendo lo que pone más dalente en 'Tablas de frecuencias unidimensionales')
 
-table(Respuestas)
+table(Respuestas) #nos indica las veces que ha aparecido si/nivel y no/nivel
 ```
 
 ## Tablas de frecuencias unidimensionales
@@ -211,9 +213,9 @@ Al aplicar `table()` a un vector obtenemos una tabla unidimensional formada por 
 Los nombres de las columnas de una tabla unidimensional se obtienen con la función `names()`.
 
 ```{r}
-names(table(x))
+names(table(x)) #devuelve el nombre de los niveles de x
 
-names(table(Respuestas))
+names(table(Respuestas)) #devuelve el nombre de los niveles de respuestas
 ```
 
 ## Tablas de frecuencias unidimensionales
@@ -356,6 +358,10 @@ table(Respuestas ,Sexo)
 
 - Comprobad qué ocurre si cambiamos el orden de las columnas en la función `table()`
 - Usad la función `t()` para transponer ambas tablas y comprobad el resultado
+```{r}
+table(Sexo, Respuestas)
+t(table(Sexo, Respuestas))
+```
 
 <div class = "aligncenter">
 ![](Imgs/studytime.png)
@@ -414,14 +420,14 @@ La función `CrossTable()` del paquete `gmodels` permite producir (especificando
 La leyenda *Cell Contents* explica los contenidos de cada celda de la tabla: la frecuencia absoluta, la frecuencia relativa por filas, la frecuencia relativa por columnas, y la frecuencia relativa global. Esta función dispone de muchos parámetros que permiten modificar el contenido de las celdas, y que podéis consultar en `help(CrossTable)`.
 
 
-<!--
+
 ```{r}
 #Instalamos y cargamos el paquete gmodels
 #install.packages("gmodels")
 library(gmodels)
 CrossTable(Sexo,Respuestas,prop.chisq=FALSE)
 ```
--->
+
 
 
 ## Tablas de frecuencias bidimensionales
@@ -549,7 +555,7 @@ La manera más sencilla de dibujar un diagrama de barras de las frecuencias abso
 
 
 ```{r}
-barplot(table(Sexo), col=c("lightblue","pink"), main="Diagrama de barras de 
+barplot(table(Sexo), col=c("darkred","lightgreen"), main="Diagrama de barras de 
 las frecuencias absolutas\n de la variable \"Sexo\"")
 ```
 
@@ -557,7 +563,7 @@ las frecuencias absolutas\n de la variable \"Sexo\"")
 ## Diagrama de barras
 
 ```{r}
-barplot(prop.table(table(Respuestas)), main="Diagrama de barras de frecuencias 
+barplot(prop.table(table(Respuestas)),col=c("red","green"), main="Diagrama de barras de frecuencias 
         relativas\n de la variable \"Respuestas\"")
 ```
 
@@ -571,8 +577,8 @@ Habréis observado que en las funciones `barplot()` anteriores hemos usado el pa
 <!--Se pueden especificar los colores de las barras usando el parámetro col. Si se iguala a un solo color, todas las barras serán de este color, pero también se puede especificar un color para cada barra, igualando col a un vector de colores.-->
 ```{r}
 par(mfrow=c(1,2))
-barplot(table(Respuestas), col=c("green"))
-barplot(table(Respuestas), col=c("red","blue"))
+barplot(table(Respuestas), col=c("darkgreen"))
+barplot(table(Respuestas), col=c("darkred","darkblue"))
 par(mfrow=c(1,1))
 ```
 
@@ -675,11 +681,11 @@ Los paquetes `vcd` y `vcdExtra` incluyen otras funciones que producen representa
 
 <!--
 Muchos más gráficos
-
+-->
 ```{r}
-#library(vcd)
-#País = sample(c("Francia","Alemania","España"), size = length(Sexo), replace = T)
-#cotabplot(table(Sexo,Respuestas,País))
+library(vcd)
+País = sample(c("Francia","Alemania","España"), size = length(Sexo), replace = T)
+cotabplot(table(Sexo,Respuestas,País))
 ```
 
 Muchos más gráficos
@@ -689,7 +695,7 @@ Muchos más gráficos
 #mosaic3d(HairEyeColor, type="expected", box=TRUE,
 #col=c("pink","lightblue"))
 ```
--->
+
 
 # Ejemplo final
 

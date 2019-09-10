@@ -3,8 +3,8 @@ title: "03-people"
 author: "Curso de Estadística Descriptiva"
 date: "24/12/2018"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 # Ejemplo de color de ojos y de pelo
@@ -18,12 +18,12 @@ sum(HairEyeColor) -> total
 El total de individuos de la tabla de datos es `r total`.
 
 ```{r}
-prop.table(HairEyeColor, margin = 3)
-prop.table(HairEyeColor, margin = c(1,2))
+prop.table(HairEyeColor, margin = 3) #Por genero
+prop.table(HairEyeColor, margin = c(1,2)) #Por color de pelo y ojos
 ```
 
 ```{r}
-aperm(HairEyeColor, perm = c("Sex", "Hair", "Eye"))
+aperm(HairEyeColor, perm = c("Sex", "Hair", "Eye")) #para cambiar el orden de las columnas con 'aperm'(array permutation)
 ```
 
 ```{r}
