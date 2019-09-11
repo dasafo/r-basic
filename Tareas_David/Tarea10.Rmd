@@ -1,0 +1,57 @@
+---
+title: "Tarea 10"
+author: "David Salas"
+date: "9/11/2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## *Instala y carga el paquete `MASS`. En el hay una tabla de datos llamada `birthwt` sobre factores que pueden incidir en el peso de los niños al nacer.*
+```{r}
+library(MASS)
+str(birthwt)
+```
+
+## **1- Utiliza 'str()' y 'head()' para explorar la estructura, y con help(), mirar el significado de cada variable.**
+
+```{r}
+str(birthwt)
+head(birthwt,5)
+help("birthwt")
+```
+low: Peso al nacer <2.5kg
+age: Edad de la mujer en años
+lwt: Peso de la madre en libras en su último periodio menstrual
+race: 1-blanca, 2-negra, 3- otra
+smoke: Fuma durante el embarazo
+ptl: cantidad de trabajos prematuros anteriores
+ht: historial de hipertension
+io: Irritabilidad uterina
+ftv: Cantidad de visitas al médico durante el primer trimestre
+bwt: Peso al nacer en gramos
+
+## **2- Calcula una tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre influye en el peso del bebé.**
+```{r}
+prop.table(table(birthwt$race, birthwt$low), margin=1) #Por raza
+prop.table(table(birthwt$race, birthwt$low), margin=2) #por peso
+```
+
+
+## **3- Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.**
+```{r}
+
+```
+
+## **4- Dibuja un diagrama bidimensional de barras, con las barras organizadas en bloques, que permita visualizar la información de los ejercicios anteriores. Aprovecha para nombres adecuados a los bloques, colores a las barras, y añadir una leyenda que explique qué representa cada barra.**
+
+## **5- ¿Se puede obtener alguna conclusión de la tabla y el diagrama de barras anterior? Argumenta tu respuesta.**
+
+## **6- Repite los cuatro ejercicios anteriores para los pares (madre fumadora o no, peso inferior a 2.5 kg o no) y para los pares (madre hipertensa o no, peso inferior a 2.5 kg o no.**
+
+## **7- Calcula una tabla de frecuencias relativas marginales de las ternas (raza de la madre, madre fumadora o no, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre y su condición de fumadora o no fumadora influyen en el peso del bebé.**
+
+## **8- Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.**
