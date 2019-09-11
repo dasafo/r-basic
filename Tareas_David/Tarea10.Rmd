@@ -36,22 +36,92 @@ bwt: Peso al nacer en gramos
 
 ## **2- Calcula una tabla de frecuencias relativas marginales de los pares (raza de la madre, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre influye en el peso del bebé.**
 ```{r}
-prop.table(table(birthwt$race, birthwt$low), margin=1) #Por raza
-prop.table(table(birthwt$race, birthwt$low), margin=2) #por peso
-```
+lowrace=table(birthwt$race, birthwt$low)
+dimnames(lowrace) = list(
+  Raza = c("Blanca", "Negra", "Otras"),
+  Peso = c("+ de 2.5Kg", "- de 2.5Kg")
+)
+prop.table(lowrace, margin=2) #por peso
 
+```
+Las mujeres blancas tienen un 56% de bebes por encima de '2.5 Kg', mientras que las de otras razas tienen un 42% de bebes por debajo de '2.5 Kg'.
 
 ## **3- Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.**
 ```{r}
-
+plot(t(prop.table(lowrace)), col=c("white","burlywood4", "lightgreen"), main="Gráfico de mosaico de los niveles
+     \"Raza\" y \"Peso\"")
 ```
 
 ## **4- Dibuja un diagrama bidimensional de barras, con las barras organizadas en bloques, que permita visualizar la información de los ejercicios anteriores. Aprovecha para nombres adecuados a los bloques, colores a las barras, y añadir una leyenda que explique qué representa cada barra.**
 
+```{r}
+barplot(prop.table(lowrace, margin = 2), beside = TRUE,
+        col = c("white","burlywood4", "lightgreen"), 
+        args.legend = list(x=ncol(lowrace)+2, y.intersp=0.8),
+        main = "Frecuencias relativas de cada raza\n para cada peso de los recién nacidos", legend.text=TRUE)
+```
+
 ## **5- ¿Se puede obtener alguna conclusión de la tabla y el diagrama de barras anterior? Argumenta tu respuesta.**
+
+Podemos ver que las mujeres blancas tienen más bebes por encima de los `2.5Kg` (el `56%`) mientras que las mujeres de otras razas son lo que tienen a los bebes por debajo de los `2.5Kg` (el `42%`)
 
 ## **6- Repite los cuatro ejercicios anteriores para los pares (madre fumadora o no, peso inferior a 2.5 kg o no) y para los pares (madre hipertensa o no, peso inferior a 2.5 kg o no.**
 
+```{r}
+smokelow=table(birthwt$smoke, birthwt$low)
+dimnames(smokelow) = list(
+  Fumadora = c("No", "Si"),
+  Peso = c("+ de 2.5Kg", "- de 2.5Kg")
+)
+prop.table(smokelow, margin=2)
+plot(t(prop.table(smokelow)), col=c("lightblue","burlywood4"), main="Gráfico de mosaico \"Fumador\" y \"Peso\"")
+
+barplot(t(prop.table(smokelow, margin = 2)), beside = TRUE,
+        col = c("lightblue","burlywood4"), 
+        args.legend = list(x=ncol(smokelow)+2, y.intersp=0.8),
+        main = "Frecuencias relativas de fumadoras\n para cada peso de los recién nacidos", legend.text=TRUE)
+```
+Las mujeres que no fuman tienen hijos con más de 2.5 Kg respecto a las que fuman.
+
+```{r}
+htlow=table(birthwt$ht, birthwt$low)
+dimnames(htlow) = list(
+  Hipertensa = c("No", "Si"),
+  Peso = c("+ de 2.5Kg", "- de 2.5Kg"),
+)
+prop.table(htlow, margin=2)
+plot(t(prop.table(htlow)), col=c("lightblue","burlywood4"), main="Gráfico de mosaico \"Hipertension\" y \"Peso\"")
+
+barplot(prop.table(htlow, margin = 2), beside = TRUE,
+        col = c("lightblue","burlywood4"), 
+        args.legend = list(x=ncol(htlow)+2, y.intersp=0.8),
+        main = "Frecuencias relativas de hipertensas\n para cada peso de los recién nacidos", legend.text=TRUE)
+```
+No hay una relación clara entre mujeres hipertensas y no hipertensas respecto al peso del bebe al nacer.
 ## **7- Calcula una tabla de frecuencias relativas marginales de las ternas (raza de la madre, madre fumadora o no, peso inferior a 2.5 kg o no) que permita ver si la raza de la madre y su condición de fumadora o no fumadora influyen en el peso del bebé.**
 
+```{r}
+htracelow=table(birthwt$ht, birthwt$race,birthwt$low)
+dimnames(htracelow) = list(
+  Hipertensa = c("No", "Si"),
+  Raza = c("Blanca", "Negra", "Otras"),
+  Peso = c("+ de 2.5Kg", "- de 2.5Kg")
+  
+)
+prop.table(htracelow, margin=2)
+
+```
+
+
 ## **8- Dibuja un diagrama de mosaico de la tabla del ejercicio anterior.**
+```{r}
+htracelow=table(birthwt$low,birthwt$race,birthwt$ht )
+dimnames(htracelow) = list(
+  Peso = c("+ de 2.5Kg", "- de 2.5Kg"),
+  Raza = c("Blanca", "Negra", "Otras"),
+   Hipertensa = c("No", "Si")
+)
+prop.table(htracelow, margin=1)
+plot(htracelow, col=c("lightblue","burlywood4"), main="Gráfico de mosaico \"Raza\", \"Hipertension\" y \"Peso\"")
+```
+

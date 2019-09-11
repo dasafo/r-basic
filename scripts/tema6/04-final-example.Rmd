@@ -10,10 +10,11 @@ output: html_document
 ## Juntar color de ojos y pelo sin distinguir por sexo
 
 ```{r}
+
 ftable(HairEyeColor)
-male <- HairEyeColor[, ,"Male"]
-female <- HairEyeColor[, ,"Female"]
-data <- as.table(male+female)
+male <- HairEyeColor[, ,"Male"] #extraemos todos los colores de pelo y de ojos para los hombres
+female <- HairEyeColor[, ,"Female"] #extraemos todos los colores de pelo y de ojos para las mujeres
+data <- as.table(male+female) #sumamos las funciones male y female creadas arriba
 data
 ```
 
