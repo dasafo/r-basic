@@ -20,15 +20,16 @@ $$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$$.
 
 ```{r}
 sum(x)/n # mean
+mean(x)
 ```
 
 
-## Media aritmética ponderada
+## Media aritmética ponderada(otorgar pesos dependiendo se su relevancia en el estudio)
 
 $$\bar{x}_w = \frac{\sum_{i=1}^nw_i\cdot x_i}{\sum_{i=1}^n w_i}$$
 
 ```{r}
-w = c(1, 2, 2, 3, 3, 2, 2, 1)
+w = c(1, 2, 2, 3, 3, 2, 2, 1) #media aritmetica ponderada(si los pesos fuesen todos 1 se convertiría en la media aritmética, ya que todos los valores pesarian los mismo)
 sum(w*x)/sum(w)
 ```
 

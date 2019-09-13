@@ -1,0 +1,97 @@
+---
+title: "Tarea12"
+author: "David Salas"
+date: "9/12/2019"
+output: html_document
+---
+## *Carga el conjunto de datos de la carpeta data llamado grades.txt en R y responde a las siguientes preguntas.*
+
+
+### 1- Calcula la media, la mediana y la moda redondeada a dos cifras decimales de las notas numéricas de los exámenes tanto de forma conjunta como por estudio universitario. ¿En qué grupo observamos la nota más alta? ¿Qué grupo está por encima de la media de estudiantes?
+```{r}
+df = read.table("../data/grades.txt")
+
+summary(df, digits = 3)
+
+medias_grup = by(df$nota, df$estudio, FUN=mean)
+medias_grup
+
+mediana_grup=by(df$nota, df$estudio, FUN = median)
+mediana_grup
+
+#agregamos la funcion para la moda
+aggregate(df$nota~df$estudio,FUN = function(x) {names(which(table(round(x,2))==max(table(round(x,2)))))})
+  
+
+media_estudiantes = round(mean(df$nota), 2)
+names(medias_grup[which(medias_grup > media_estudiantes)])
+
+
+```
+
+
+
+### 2- ¿En qué grupo observamos más variación de notas? Justifica tu respuesta
+
+```{r}
+df = read.table("../data/grades.txt")
+
+var = by(df$nota, df$estudio, FUN = sd)
+
+names(var[which(var == max(var))])
+```
+
+
+### 3- ¿Hay mucha diferencia entre el grupo que has respondido en el ejercicio 1 y en el ejercicio 2? Intenta dar una explicación objetiva del suceso
+
+
+
+### 4- Dibuja en un único gráfico los cuatro diagramas de caja, uno para cada grupo. Añade así mismo la nota media, pon nombre, título y color al gráfico para documentar el gráfico correctamente.
+
+```{r}
+df = read.table("../data/grades.txt")
+
+boxplot(df$nota~df$estudio,
+
+        col = c("lightblue", "green", "cyan", "orange"),
+
+        main = "Dispersión de notas por cada carrera")
+
+points(by(df$nota, df$estudio, FUN = mean), col = "red", pch = 20)
+```
+
+
+### 5- ¿Observas algunos valores atípicos en el boxplot anterior? ¿A qué grupo pertence?
+
+En Industrial, Informática y telemática.
+
+
+### 6- Indica a partir del boxplot anterior en qué grupo observamos más variedad de notas.
+
+```{r}
+df = read.table("../data/grades.txt")
+
+
+# Método 2 (con la variabilidad)
+
+var = by(df$nota, df$estudio, FUN = var)
+
+names(var[which(var == max(var))])
+
+```
+
+
+### 7- En base a todo lo anterior, ¿puedes afirmar de forma estadística que el examen de carrera ha ido mejor en algún estudio que en los demás?
+
+```{r}
+df = read.table("../data/grades.txt")
+
+medias = by(df$nota, df$estudio, FUN = mean)
+
+names(medias[which(medias == max(medias))])
+
+
+# Puesto que la nota media del examen de mates es mayor que la media del resto, en general ha salido mejor el examen de mates
+```
+
+

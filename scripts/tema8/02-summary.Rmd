@@ -8,12 +8,14 @@ output: html_document
 
 ```{r}
 by(iris[,c(1,3)], iris$Species, FUN = summary)
+str(iris)
 ```
 
 
 ```{r}
 aggregate(cbind(Sepal.Length,Petal.Length)~Species, 
           data=iris, FUN=summary)
+
 ```
 
 ```{r}

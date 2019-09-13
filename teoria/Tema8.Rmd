@@ -64,7 +64,7 @@ Recordemos que solamente nos interesan las frecuencias de las edades observadas.
 </div>
 
 ```{r}
-table(edad)
+table(edad) #frecuencias globales absolutas
 ```
 
 ## Ejemplo 1
@@ -74,14 +74,14 @@ Calculemos el resto de frecuencias como ya sabemos
 </div>
 
 ```{r}
-round(prop.table(table(edad)),3)
-cumsum(table(edad))
+round(prop.table(table(edad)),3) #frecuencias globales relativas
+cumsum(table(edad)) #frecuencias globales acumuladas
 ```
 
 ## Ejemplo 1
 
 ```{r}
-round(cumsum(prop.table(table(edad))),3)
+round(cumsum(prop.table(table(edad))),3) #frecuancias relativas acumuladas 
 ```
 
 ## Frecuencias de datos cuantitativos
@@ -133,9 +133,9 @@ cumsum(table(dados))
 ## Ejemplo 2
 
 ```{r}
-round(cumsum(prop.table(table(dados))),2)
+round(cumsum(prop.table(table(dados))),2) #frecuencias relativas acumuladas
 dados.df = data.frame(Puntuacion = 1:6,
-                      Fr.abs = as.vector(table(dados)),
+                      Fr.abs = as.vector(table(dados)), #'as.vector' para poder colocarla como columna
                       Fr.rel = as.vector(round(prop.table(table(dados)),2)),
                       Fr.acu = as.vector(cumsum(table(dados))),
                       Fr.racu = as.vector(round(cumsum(prop.table(table(dados))),2)))
@@ -216,6 +216,7 @@ median(edad) #La mediana
 ```{r}
 median(dados)
 as.numeric(names(which(table(edad)==max(table(edad))))) #La moda
+#con el which nos devuelve la posicion, con name el nombre de esa posicion y con numerico el numero de ese nombre de esa posicion
 as.numeric(names(which(table(dados)==max(table(dados)))))
 ```
 
