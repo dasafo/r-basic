@@ -1,0 +1,191 @@
+---
+title: "Tarea13"
+author: "David Salas"
+date: "9/13/2019"
+output: html_document
+---
+
+## 1- Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la Scott en Python.
+
+```{python}
+import math
+import pandas as pd
+import numpy as np
+
+
+cw = pd.read_csv('../data/datacrab.txt',delimiter=' ')
+cw = cw['width']
+
+#determinamos la longitud, la amplitud de Scott
+n = len(cw)
+As = 3.5*cw.std()*math.pow(n,(-1/3))
+k = math.ceil((max(cw) - min(cw))/As)
+a = (max(cw) - min(cw)) / k
+
+if (As*100 % 10 == 0):
+
+    As = a + 0.1
+else:
+
+    As = math.ceil(As * 10)/10
+
+l1 = min(cw)-(0.5*0.1)
+
+l = []
+for i in range(0,k):
+
+    l.append(round(l1 + a*i,2))
+
+
+x = []
+for i in range(0,len(l)-1):
+
+    #Redondeo para evitar problemas por la precision de la coma flotante
+    x.append(round((l[i] + l[i+1]) / 2, 1))
+
+
+print ("amplitud:", As)     
+print ("intervalos:",end='')
+
+for i in range (0,len(l)-2):
+
+    print ("[", l[i], ",", l[i+1], ")", ",",sep='',end='')
+
+print ("[", l[len(l)-2], ",", l[len(l)-1], ")",sep='')
+print ("marcas de clase:", x)
+```
+
+
+## 2- Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la raíz en R o en Python.
+
+```{python}
+import math
+import pandas as pd
+
+cw = pd.read_csv('../data/datacrab.txt',delimiter=' ')
+cw = cw['width']
+
+n = len(cw)
+k = math.ceil(math.sqrt(n))
+a = (max(cw) - min(cw)) / k
+
+if (a*100 % 10 == 0):
+    a = a + 0.1
+else:
+    a = math.ceil(a * 10)/10
+
+l1 = min(cw)-(0.5*0.1)
+l = []
+
+for i in range(0,k):
+
+    l.append(round(l1 + a*i,2))
+
+x = []
+
+for i in range(0,len(l)-1):
+
+    #Redondeo para evitar problemas por la precision de la coma flotante
+    x.append(round((l[i] + l[i+1]) / 2, 1))
+
+print ("amplitud:", a)     
+print(k)
+print ("intervalos:",end='')
+
+for i in range (0,len(l)-2):
+
+    print ("[", l[i], ",", l[i+1], ")", ",",sep='',end='')
+
+print ("[", l[len(l)-2], ",", l[len(l)-1], ")",sep='')
+print ("marcas de clase:", x)
+```
+
+
+## 3- Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la Sturges en R o en Python
+
+```{python}
+import math
+import pandas as pd
+
+cw = pd.read_csv('../data/datacrab.txt',delimiter=' ')
+cw = cw['width']
+
+n = len(cw)
+k = math.ceil(1+math.log(n,2))
+a = (max(cw) - min(cw)) / k
+
+if (a*100 % 10 == 0):
+
+    a = a + 0.1
+else:
+    a = math.ceil(a * 10)/10
+
+l1 = min(cw)-(0.5*0.1)
+l = []
+
+for i in range(0,k):
+
+    l.append(round(l1 + a*i,2))
+
+x = []
+
+for i in range(0,len(l)-1):
+    #Redondeo para evitar problemas por la precision de la coma flotante
+    x.append(round((l[i] + l[i+1]) / 2, 1))
+
+print ("amplitud:", a)     
+print ("intervalos:",end='')
+
+for i in range (0,len(l)-2):
+
+    print ("[", l[i], ",", l[i+1], ")", ",",sep='',end='')
+
+print ("[", l[len(l)-2], ",", l[len(l)-1], ")",sep='')
+print ("marcas de clase:", x)
+```
+
+
+## 4- Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la  Freedman-Diaconis en R o en Python.
+
+```{python}
+import math
+import pandas as pd
+import numpy as np
+
+cw = pd.read_csv('../data/datacrab.txt',delimiter=' ')
+cw = cw['width']
+
+a = 2 * (np.quantile(cw,0.75) - np.quantile(cw,0.25)) * math.pow(n, -1/3)
+k = math.ceil((max(cw) - min(cw))/a)
+a = (max(cw) - min(cw)) / k
+
+if (a*100 % 10 == 0):
+
+    a = a + 0.1
+else:
+    a = math.ceil(a * 10)/10
+
+l1 = min(cw)-(0.5*0.1)
+l = []
+
+for i in range(0,k):
+
+    l.append(round(l1 + a*i,2))
+    
+x = []
+for i in range(0,len(l)-1):
+    #Redondeo para evitar problemas por la precision de la coma flotante
+    x.append(round((l[i] + l[i+1]) / 2, 1))
+
+print ("amplitud:", a)     
+print ("intervalos:",end='')
+
+for i in range (0,len(l)-2):
+
+    print ("[", l[i], ",", l[i+1], ")", ",",sep='',end='')
+
+print ("[", l[len(l)-2], ",", l[len(l)-1], ")",sep='')
+print ("marcas de clase:", x)
+```
+
+

@@ -21,11 +21,11 @@ irisdf
 # Funciones para las tablas de frecuencias
 ```{r}
 TablaFrecs = function(x,k,A,p){ 
-  L = min(x)-p/2+A*(0:k)
-  x_cut = cut(x, breaks = L, right=FALSE)
-  intervals = levels(x_cut)
-  mc = (L[1]+L[2])/2+A*(0:(k-1))
-  Fr.abs = as.vector(table(x_cut)) 
+  L = min(x)-p/2+A*(0:k) #creamos los extremos de los intevalos
+  x_cut = cut(x, breaks = L, right=FALSE) #creamos las divisiones(cerrados por la izqa, abiertos por la drcha.)
+  intervals = levels(x_cut) #extraemos los niveles generados en x_cut
+  mc = (L[1]+L[2])/2+A*(0:(k-1)) #el punto central(marcas de clase)
+  Fr.abs = as.vector(table(x_cut)) #recuencia absoluta(convirtiendola a vector)
   Fr.rel = round(Fr.abs/length(x),4) 
   Fr.cum.abs = cumsum(Fr.abs) 
   Fr.cum.rel = cumsum(Fr.rel)
@@ -33,7 +33,8 @@ TablaFrecs = function(x,k,A,p){
   tabla
 }
 
-TablaFrecs.L = function(x,L,V){
+#La siguiente funcion es igual que la anterior pero ahora ya partimos de los extremos de los intervalos y la varibla V por si queremos cerrar el intervalo a la drcha.
+TablaFrecs.L = function(x,L,V){ 
   x_cut = cut(x, breaks=L, right=FALSE, include.lowest=V)
   intervals = levels(x_cut)
   mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
@@ -48,7 +49,7 @@ TablaFrecs.L = function(x,L,V){
 
 La tabla de frecuencias de la longitud de los pétalos de *Iris* es:
 ```{r}
-TablaFrecs(petals, k = 6, A = 1, p = 0.1)
+TablaFrecs(petals, k = 6, A = 1, p = 0.1) #k son las divsiones, p la precision
 TablaFrecs.L(petals, L = c(1,3,4,5,5.5,6,6.5,7), V = FALSE)
 ```
 
