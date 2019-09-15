@@ -19,13 +19,13 @@ $$f(k) = p^k(1-p)^{1-p},\ k\in \{0,1\}$$
 
 ```{r}
 library(Rlab)
-dbern(0, prob= 0.7)
-dbern(1, prob = 0.7)
-pbern(0, prob = 0.7)
-pbern(1, prob = 0.7)
-qbern(0.5, prob = 0.7)
-qbern(0.25, prob = 0.7)
-rbern(100, prob = 0.7) -> data
+dbern(0, prob= 0.7) #funcion densidad que la moneda sea 0
+dbern(1, prob = 0.7) #funcion densidad que la moneda sea 1
+pbern(0, prob = 0.7) #funcion de probabilidad acumulada para 0
+pbern(1, prob = 0.7) #funcion de probabilidad acumulada para 1
+qbern(0.5, prob = 0.7) #cuantil en 0.5
+qbern(0.25, prob = 0.7) #cuantil en 0.25
+rbern(100, prob = 0.7) -> data #generamos 100 numeros aleatorios 0 y 1, y los metemos en data
 hist(data)
 ```
 

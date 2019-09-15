@@ -20,11 +20,13 @@ TODO: escribir la FDens y la FDistr
 library(Rlab)
 n = 30
 p = 0.6
-plot(0:n, dbinom(0:n, size = n, prob = p))
-plot(0:n, pbinom(0:n, size = n, prob = p))
-qbinom(0.5, n, p)
-qbinom(0.25, n, p)
-hist(rbinom(100000, n, p), breaks = 0:30)
+#densidad binomial(probabilid de sacar entre 0 y 30 exitos sabiendo que el tamaño es n y que su probabilidad es 0.6)
+plot(0:n, dbinom(0:n, size = n, prob = p)) 
+
+plot(0:n, pbinom(0:n, size = n, prob = p)) #probabilidad acumulada binomial 
+qbinom(0.5, n, p) #cuantil para 0.5
+qbinom(0.25, n, p) #primer cuartil
+hist(rbinom(100000, n, p), breaks = 0:30) #hasta el INF daría la de densidad
 ```
 
 ## En Python
