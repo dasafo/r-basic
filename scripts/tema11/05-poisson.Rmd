@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Distribución de Poisson
 
-Supongamos que $X$ modela el número de errores por página que tiene un valor esperado $\lambda = 5$.
+Supongamos que $X$ modela el número de errores por página que tiene un valor esperado $\lambda = 5$ (5 verces por página).
 
 ## En `R`
 ```{r}

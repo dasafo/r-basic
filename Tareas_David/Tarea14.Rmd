@@ -1,0 +1,199 @@
+---
+title: "Tarea14"
+author: "David Salas"
+date: "9/16/2019"
+output: html_document
+---
+
+## Tarea 14
+
+### 1- La cantidad de tiempo (en horas) utilizada para completar un producto determinado sigue una distribución `N(10, 2)` . Calculad la probabilidad de que se tarde:
+### **a)** Menos de `6` horas
+
+### **b)** Entre `7` y `13` horas
+
+### Estandarizad y luego calculad la probabilidad requerida mediante las tablas y comprobad vuestro resultado en `R` (o Python)
+
+```{r Pregunta1, echo=FALSE}
+
+m1 = 10
+
+s1 = 2
+
+```
+
+a)
+
+```{r Respuesta1a, echo=FALSE}
+
+#Estandarizamos "6hrs."
+
+x6=(6-m1)/s1
+
+#Tomamos la probabilidad acumulada de que el producto salga en menos de 6hrs (std)
+
+Resp1a=pnorm(x6)
+
+```
+
+b)
+
+```{r Respuesta1b, echo=FALSE}
+
+#Estandarizamos "7hrs."
+
+x7=(7-m1)/s1
+
+#Estandarizamos "13hrs."
+
+x13=(13-m1)/s1
+
+#Hacemos el cálculo con las horas estandarizadas de:
+
+#La probabilidad de que el producto salga entre 7 y 13 hrs.
+
+Resp1b=pnorm(x13)-pnorm(x7)
+```
+
+## Tarea 14
+
+### 2- El valor (en millones) de las ventas anuales realizadas en la Discográfica "Hasta quedarnos sin tímpanos" sigue un modelo normal de media igual a 200 y desviación tíıpica igual a 40.
+
+### **a)** Calcula la probabilidad de que el número de ventas sea exactamente igual a 200 (millones)
+
+### **b)** Calcula la probabilidad de que el número de ventas sea mayor que 250 (millones)
+
+### **c)** Calcula la probabilidad de que el número de ventas sea menor o igual que 100 (millones)
+
+### Estandarizad y luego calculad la probabilidad requerida mediante las tablas y comprobad vuestro resultado en R (o Python)
+
+```{r Pregunta2, echo=FALSE}
+
+m2 = 200
+
+s2 = 40
+
+```
+
+a)
+
+```{r Respuesta2a, echo=FALSE}
+
+#Estandarizamos "200mc."
+
+x200=(200-m2)/s2
+
+#Tomamos la probabilidad acumulada de que el producto salga en menos de 6hrs (std)
+
+Resp2a=dnorm(x200)
+
+```
+
+b)
+
+```{r Respuesta2b, echo=FALSE}
+
+#Estandarizamos "250mc."
+
+x250=(250-m2)/s2
+
+#Hacemos el cálculo para obtener la probabilidad de que el número de ventas sea mayor que 250mc.
+
+Resp2b=1-pnorm(x250)
+
+```
+
+c)
+
+```{r Respuesta2c, echo=FALSE}
+
+#Estandarizamos "100mc."
+
+x100=(100-m2)/s2
+
+#Tomamos la probabilidad acumulada de obtener 100mc vendidas.
+
+Resp2c=pnorm(x100)
+
+```
+
+## Tarea 14
+
+### 3- Las puntuaciones obtenidas en un examen tipo test realizado a un grupo de opositores se distribuyen normalmente con media 50 y desviación típica 6.5. Calculad
+
+### **a)** Probabilidad de tener una puntuación menor a 23 puntos.
+
+### **b)** Probabilidad de tener entre 27.3 y 43.1 puntos
+
+### **c)** Probabilidad de tener más de 62 puntos
+
+### **d)** Probabilidad de tener 3.2 puntos o menos
+
+### **e)** Hallad el número de puntos que se deben obtener para que la probabilidad de sacar menos de esa cantidad de puntos sea de 0.045
+
+### **f)** Repetid el apartado anterior, pero esta vez para obtener una probabilidad de 0.45
+
+### Estandarizad y luego calculad la probabilidad requerida mediante las tablas y comprobad vuestro resultado en R (o Python)
+
+a)
+
+```{r Respuesta3a, echo=FALSE}
+
+#Estandarizamos "23pts."
+
+x23=(23-m3)/s3
+
+#Tomamos la probabilidad acumulada de tener puntuación menor que 23 (std)
+
+Resp3a=pnorm(x23)
+
+```
+
+b)
+
+```{r Respuesta3b, echo=FALSE}
+
+#Estandarizamos "27.3pts."
+
+x27=(27.3-m3)/s3
+
+#Estandarizamos "43.1pts."
+
+x43=(43.1-m3)/s3
+
+Resp3b=pnorm(x43)-pnorm(x27)
+
+```
+
+c)
+
+```{r Respuesta3c, echo=FALSE}
+
+#Estandarizamos "62pts."
+
+x62=(62-m3)/s3
+
+Resp3c=1-pnorm(x62)
+
+```
+
+d)
+
+```{r Respuesta3d, echo=FALSE}
+
+#Estandarizamos "3.2pts."
+
+x3=(3.2-m3)/s3
+
+Resp3d=pnorm(x3)
+
+```
+
+e)
+
+En la tabla de la distribución normal, localizamos el valor 0.045, que corresponde a $-1.69$. Trasladado a nuestros parámetros, el resultado es: `r -1.69*s3+m3`.
+
+f)
+
+En la tabla de la distribución normal, localizamos el valor 0.045, que corresponde a $-0.12$. Trasladado a nuestros parámetros, el resultado es: `r -0.12*s3+m3`.
+
