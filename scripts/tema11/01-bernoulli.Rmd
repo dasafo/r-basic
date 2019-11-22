@@ -16,7 +16,6 @@ $$f(k) = p^k(1-p)^{1-p},\ k\in \{0,1\}$$
 
 ## En R
 
-
 ```{r}
 library(Rlab)
 dbern(0, prob= 0.7) #funcion densidad que la moneda sea 0

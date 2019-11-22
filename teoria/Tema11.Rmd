@@ -241,7 +241,7 @@ donde $p$ es la probabilidad de éxito y $q = 1-p$ es la probabilidad de fracaso
 
 El código de la distribución de Beroulli:
 
-- En `R` tenemos las funciones del paquete `Rlab`: `dbenr(x,prob), pbenr(q,prob), qbenr(p,prob), rbenr(n, prob)` donde `prob` es la probabilidad de éxito.
+- En `R` tenemos las funciones del paquete `Rlab`: `dbern(x,prob), pbern(q,prob), qbern(p,prob), rbern(n, prob)` donde `prob` es la probabilidad de éxito.
 - En `Python` tenemos las funciones del paquete `scipy.stats.bernoulli`: `pmf(k,p), cdf(k,p), ppf(q,p), rvs(p, size)` donde `p` es la probabilidad de éxito.
 
 ## Distribución Binomial
