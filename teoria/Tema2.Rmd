@@ -2,12 +2,12 @@
 title: "Tema 2 - Documentación con R Markdown"
 author: "Juan Gabriel Gomila & María Santos"
 output:
+  beamer_presentation: default
+  slidy_presentation: default
   ioslides_presentation:
     css: JB_style.css
     logo: Imgs/LogoCurso.png
     widescreen: yes
-  slidy_presentation: default
-  beamer_presentation: default
 ---
 
 ```{r setup, include=FALSE}
